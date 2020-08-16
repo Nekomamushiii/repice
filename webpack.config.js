@@ -13,7 +13,7 @@ module.exports = {
     contentBase: "./docs",
   },
   output: {
-    filename: "main.js",
+    filename: "js/main.js",
     path: path.resolve(__dirname, "docs"),
   },
   module: {
