@@ -1,6 +1,20 @@
-const arr = [12, 44, 35];
-let myfunc = (a) => {
-  console.log(`too : ${a}`);
-};
-const arr2 = [...arr, 65, 24];
-myfunc(arr2[1]);
+require("@babel/polyfill");
+
+import axios from "axios";
+
+async function doSearch(search) {
+  try {
+    let result = await axios(
+      "https://forkify-api.herokuapp.com/api/search?q=" + search
+    );
+    const recipe = result.data.recipes;
+    console.log(recipe);
+    result = await axios(
+      "https://forkify-api.herokuapp.com/api/get?rId=" + recipe[1].recipe_id
+    );
+    console.log(result);
+  } catch (error) {
+    alert(error);
+  }
+}
+doSearch("pizza");
